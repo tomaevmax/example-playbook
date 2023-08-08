@@ -1,6 +1,7 @@
 galaxy_info:
   author: Alexey Metlyakov
   role_name: java
+  namespace: jenkis
   description: simple install openjdk from remote url
   company: Netology
   license: BSD-3-Clause

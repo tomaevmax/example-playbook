@@ -4,4 +4,4 @@
   tasks:
     - name: "Include mnt-homeworks-ansible"
       include_role:
-        name: "mnt-homeworks-ansible"
+        name: "java"

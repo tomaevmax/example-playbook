@@ -2,14 +2,12 @@ node('ansible'){
   stage('prepare'){
     git credentialsId: '30cefb5f-0258-4259-9ccd-b9f24d413247', url: 'https://github.com/tomaevmax/example-playbook.git'
   }
-  stage('install'){
-    sh 'pip3 install molecule'
-    sh 'pip3 install molecule-docker'
-    sh 'pip3 install "urllib3<2.0"'
-  }
-  stage('run test'){
-    dir('roles/java') {
-        sh 'molecule test -s default'
-    }  
+  stage('run install'){
+        if ( "${prod_run}" == "true" ){
+            sh 'ansible-playbook site.yml -i inventory/prod.yml'
+        }
+        else{
+            sh 'ansible-playbook site.yml -i inventory/prod.yml --check --diff'
+        }
   }
 }
